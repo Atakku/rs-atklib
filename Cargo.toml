@@ -1,0 +1,14 @@
+# Copyright 2025 Atakku <https://atakku.dev>
+#
+# This project is dual licensed under MIT and Apache.
+
+[package]
+name = "atklib"
+version = "0.0.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[features]
+
+
+[dependencies]
