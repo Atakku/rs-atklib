@@ -7,3 +7,5 @@ mod macros;
 pub type Err = Box<dyn std::error::Error + Send + Sync + 'static>;
 pub type Res<T> = Result<T, Err>;
 pub type R = Res<()>;
+
+pub use paste;
