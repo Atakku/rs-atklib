@@ -9,3 +9,10 @@ pub type Res<T> = Result<T, Err>;
 pub type R = Res<()>;
 
 pub use paste;
+
+use_mod!{
+  mod extensions {
+    mod iteratable;
+    mod system_time;
+  }
+}
