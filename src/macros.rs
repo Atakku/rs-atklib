@@ -70,9 +70,9 @@ macro_rules! into {
 }
 
 #[macro_export]
-macro_rules! return_if {
+macro_rules! if_return {
   ($expr:expr) => {
-    $crate::return_if!($expr, {});
+    $crate::if_return!($expr, {});
   };
   ($expr:expr, $return:expr) => {
     if $expr {
