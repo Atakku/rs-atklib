@@ -14,7 +14,7 @@ macro_rules! get_env {
 
 #[macro_export]
 macro_rules! once_cell {
-  ($vis:vis async |$name:ident: $ty:ty | $block:block) => {
+  (async |$vis:vis $name:ident: $ty:ty | $block:block) => {
     $crate::paste::paste! {
       static [<$name:upper>]: tokio::sync::OnceCell<$ty> = tokio::sync::OnceCell::const_new();
 
