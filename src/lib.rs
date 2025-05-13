@@ -30,4 +30,4 @@ mod features {
   );
 }
 #[allow(unused)]
-use features::*;
+pub use features::*;
