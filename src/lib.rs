@@ -2,6 +2,7 @@
 //
 // This project is dual licensed under MIT and Apache.
 
+
 mod macros;
 
 pub type Err = Box<dyn std::error::Error + Send + Sync + 'static>;
@@ -22,6 +23,7 @@ mod features {
   #[cfg(feature = "postgres")]
   crate::use_mod!(
     mod postgres {
+      mod export;
       mod pool;
       mod schema;
     }
