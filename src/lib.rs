@@ -10,9 +10,22 @@ pub type R = Res<()>;
 
 pub use paste;
 
-use_mod!{
+use_mod!(
   mod extensions {
     mod iteratable;
     mod system_time;
   }
+);
+
+// TODO: Allow use_mod macro to parse attributes
+mod features {
+  #[cfg(feature = "postgres")]
+  crate::use_mod!(
+    mod postgres {
+      mod pool;
+      mod schema;
+    }
+  );
 }
+#[allow(unused)]
+use features::*;

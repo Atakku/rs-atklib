@@ -1,3 +1,5 @@
+Personal library for common utilities shared across multiple similar projects
+
 Usage:
 ```rust
 [dependencies]

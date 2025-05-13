@@ -8,6 +8,19 @@ version = "0.0.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 
+[features]
+postgres = ["dep:sqlx", "dep:sea-query", "dep:sea-query-binder", "dep:tokio"]
+
 [dependencies]
 paste = "^1.0"
 extend = "^1.2"
+# Postgres
+sqlx = { version = "^0.8", optional = true, features = [
+  "runtime-tokio",
+  "postgres",
+] }
+sea-query = { version = "^0.32", optional = true }
+sea-query-binder = { version = "^0.7", optional = true, features = [
+  "sqlx-postgres",
+] }
+tokio = { version = "^1.45", optional = true }
