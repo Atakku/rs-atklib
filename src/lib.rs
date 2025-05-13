@@ -23,8 +23,8 @@ mod features {
   #[cfg(feature = "postgres")]
   crate::use_mod!(
     mod postgres {
-      mod export;
       mod pool;
+      mod query;
       mod schema;
     }
   );

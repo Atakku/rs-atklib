@@ -11,7 +11,7 @@ macro_rules! schema {
     ),*}
   )*) => {
     $(
-      #[derive($crate::sea_query::Iden)]
+      #[derive(sea_query::Iden)]
       pub enum $table {
         Table, $($col),*
       }
@@ -23,21 +23,21 @@ macro_rules! schema {
         }
 
         #[inline]
-        pub fn expr(self) -> $crate::sea_query::SimpleExpr {
-          $crate::sea_query::Expr::col(self.col()).into()
+        pub fn expr(self) -> sea_query::SimpleExpr {
+          sea_query::Expr::col(self.col()).into()
         }
       }
     )*
 
     pub async fn init_tables() -> $crate::R {
       $(
-        $crate::sqlx::query_with(&$crate::sea_query::Table::create()
+        sqlx::query_with(&sea_query::Table::create()
         .if_not_exists()
         .table($table::Table)
       $(.$($table_tt)*)*
-      $(.col($crate::sea_query::ColumnDef::new($table::$col)$(.$($col_tt)*)*)
+      $(.col(sea_query::ColumnDef::new($table::$col)$(.$($col_tt)*)*)
       )*
-      .build($crate::sea_query::PostgresQueryBuilder), $crate::sqlx::postgres::PgArguments::default())
+      .build(sea_query::PostgresQueryBuilder), sqlx::postgres::PgArguments::default())
       .execute($crate::get_pg().await).await?;
       )*
       Ok(())
